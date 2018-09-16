@@ -13,37 +13,47 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
     CalculadoraTrigonometrica cal1 = new CalculadoraTrigonometrica();
     CalculadoraAritmetica cal2 = new CalculadoraAritmetica();
     int aux = 0;
-private void activacion(){
-         if (Aritmetica.isSelected()) {
+
+    private void activacion() {
+        if (Aritmetica.isSelected()) {
 
             Sumar.setEnabled(true);
             Restar.setEnabled(true);
             Multiplicar.setEnabled(true);
             Dividir.setEnabled(true);
             Igual.setEnabled(true);
-        }
-         else{
+        } else {
             Sumar.setEnabled(false);
             Restar.setEnabled(false);
             Multiplicar.setEnabled(false);
             Dividir.setEnabled(false);
-            Igual.setEnabled(false); 
-         }
+            Igual.setEnabled(false);
+        }
         if (Temperatura.isSelected()) {
             T1.setEnabled(true);
             T2.setEnabled(true);
             temp1.setEnabled(true);
             temp2.setEnabled(true);
             Convertir.setEnabled(true);
-        }
-        else{
+        } else {
             T1.setEnabled(false);
             T2.setEnabled(false);
             temp1.setEnabled(false);
-            temp2.setEnabled(false); 
-            Convertir.setEnabled(false);        
+            temp2.setEnabled(false);
+            Convertir.setEnabled(false);
         }
-}
+        if (Trigonometrica.isSelected()) {
+            Seno.setEnabled(true);
+            Coseno.setEnabled(true);
+            Tangente.setEnabled(true);
+
+        } else {
+            Seno.setEnabled(false);
+            Coseno.setEnabled(false);
+            Tangente.setEnabled(false);
+        }
+    }
+
     private void operacion(int a) {
         if (a == 0) {
             cal2.x = (int) Double.parseDouble(res.getText());
@@ -94,6 +104,10 @@ private void activacion(){
         T1 = new javax.swing.JLabel();
         T2 = new javax.swing.JLabel();
         Convertir = new javax.swing.JButton();
+        Trigonometrica = new javax.swing.JRadioButton();
+        Seno = new javax.swing.JButton();
+        Coseno = new javax.swing.JButton();
+        Tangente = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -182,23 +196,48 @@ private void activacion(){
             }
         });
 
+        Trigonometrica.setText("Trigonometrica");
+        Trigonometrica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TrigonometricaActionPerformed(evt);
+            }
+        });
+
+        Seno.setText("Sen");
+        Seno.setEnabled(false);
+        Seno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                SenoMouseClicked(evt);
+            }
+        });
+        Seno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SenoActionPerformed(evt);
+            }
+        });
+
+        Coseno.setText("Cos");
+        Coseno.setEnabled(false);
+        Coseno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CosenoMouseClicked(evt);
+            }
+        });
+
+        Tangente.setText("Tan");
+        Tangente.setEnabled(false);
+        Tangente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TangenteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(14, 14, 14)
-                        .addComponent(Sumar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Restar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Multiplicar)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(Dividir)
-                        .addGap(18, 18, 18)
-                        .addComponent(Igual))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                             .addGap(44, 44, 44)
@@ -216,13 +255,32 @@ private void activacion(){
                                             .addComponent(T1)
                                             .addGap(203, 203, 203)
                                             .addComponent(T2))
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(Convertir)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addComponent(Aritmetica)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(Temperatura))))
-                                    .addGap(0, 0, Short.MAX_VALUE))))))
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addGap(101, 101, 101)
+                                            .addComponent(Convertir)))
+                                    .addGap(0, 0, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(Aritmetica)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Sumar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Restar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Multiplicar)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(Dividir)
+                                .addGap(18, 18, 18)
+                                .addComponent(Igual))
+                            .addComponent(Temperatura)
+                            .addComponent(Trigonometrica)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Seno)
+                                .addGap(18, 18, 18)
+                                .addComponent(Coseno)
+                                .addGap(18, 18, 18)
+                                .addComponent(Tangente)))))
                 .addContainerGap(287, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -230,7 +288,9 @@ private void activacion(){
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(Aritmetica)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Sumar)
                     .addComponent(Restar)
@@ -238,9 +298,7 @@ private void activacion(){
                     .addComponent(Dividir)
                     .addComponent(Igual))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Temperatura)
-                    .addComponent(Aritmetica))
+                .addComponent(Temperatura)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(T1)
@@ -250,7 +308,14 @@ private void activacion(){
                     .addComponent(temp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(temp2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Convertir))
-                .addContainerGap(279, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(Trigonometrica)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Seno)
+                    .addComponent(Coseno)
+                    .addComponent(Tangente))
+                .addContainerGap(197, Short.MAX_VALUE))
         );
 
         pack();
@@ -287,49 +352,81 @@ private void activacion(){
     }//GEN-LAST:event_IgualMouseClicked
 
     private void TemperaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TemperaturaActionPerformed
-
+        Trigonometrica.setSelected(false);
         Aritmetica.setSelected(false);
         activacion();
-        
+
     }//GEN-LAST:event_TemperaturaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-     activacion();
+        activacion();
     }//GEN-LAST:event_formWindowOpened
 
     private void AritmeticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AritmeticaActionPerformed
         Temperatura.setSelected(false);
+        Trigonometrica.setSelected(false);
         activacion();
     }//GEN-LAST:event_AritmeticaActionPerformed
 
     private void ConvertirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConvertirMouseClicked
-        String s1 = (String) temp1.getSelectedItem(); 
+        String s1 = (String) temp1.getSelectedItem();
         String s2 = (String) temp2.getSelectedItem();
-        if(s1 == "Celcius"&& s2=="Kelvin"){
-            cal2.t= Double.parseDouble(res.getText());
-            res.setText(String.valueOf(cal2.t+273));
+        if (s1 == "Celcius" && s2 == "Kelvin") {
+            cal2.t = Double.parseDouble(res.getText());
+            res.setText(String.valueOf(cal2.t + 273));
         }
-        if(s2 == "Celcius"&& s1=="Kelvin"){
-            cal2.t= Double.parseDouble(res.getText());
-            res.setText(String.valueOf(cal2.t-273));
+        if (s2 == "Celcius" && s1 == "Kelvin") {
+            cal2.t = Double.parseDouble(res.getText());
+            res.setText(String.valueOf(cal2.t - 273));
         }
-        if(s1 == "Celcius"&& s2=="Farenheit"){
-            cal2.t= Double.parseDouble(res.getText());
-            res.setText(String.valueOf(cal2.t*9/5+32));
+        if (s1 == "Celcius" && s2 == "Farenheit") {
+            cal2.t = Double.parseDouble(res.getText());
+            res.setText(String.valueOf(cal2.t * 9 / 5 + 32));
         }
-        if(s2 == "Celcius"&& s1=="Farenheit"){
-            cal2.t= Double.parseDouble(res.getText());
-            res.setText(String.valueOf((cal2.t-32)*5/9));
+        if (s2 == "Celcius" && s1 == "Farenheit") {
+            cal2.t = Double.parseDouble(res.getText());
+            res.setText(String.valueOf((cal2.t - 32) * 5 / 9));
         }
-        if(s1 == "Kelvin"&& s2=="Farenheit"){
-            cal2.t= Double.parseDouble(res.getText());
-            res.setText(String.valueOf((cal2.t-273.15)*1.8000+32));
-        } 
-        if(s2 == "Kelvin"&& s1=="Farenheit"){
-            cal2.t= Double.parseDouble(res.getText());
-            res.setText(String.valueOf((cal2.t+459.67)*5/9));
-        }          
+        if (s1 == "Kelvin" && s2 == "Farenheit") {
+            cal2.t = Double.parseDouble(res.getText());
+            res.setText(String.valueOf((cal2.t - 273.15) * 1.8000 + 32));
+        }
+        if (s2 == "Kelvin" && s1 == "Farenheit") {
+            cal2.t = Double.parseDouble(res.getText());
+            res.setText(String.valueOf((cal2.t + 459.67) * 5 / 9));
+        }
     }//GEN-LAST:event_ConvertirMouseClicked
+
+    private void TrigonometricaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TrigonometricaActionPerformed
+        Aritmetica.setSelected(false);
+        Temperatura.setSelected(false);
+        activacion();
+    }//GEN-LAST:event_TrigonometricaActionPerformed
+
+    private void SenoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SenoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_SenoActionPerformed
+
+    private void SenoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SenoMouseClicked
+            cal1.x=Double.parseDouble(res.getText());
+            cal1.radianes(cal1.x);
+            cal1.x=cal1.seno();
+            res.setText(String.valueOf(cal1.x));
+    }//GEN-LAST:event_SenoMouseClicked
+
+    private void CosenoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CosenoMouseClicked
+            cal1.x=Double.parseDouble(res.getText());
+            cal1.radianes(cal1.x);
+            cal1.x=cal1.coseno();
+            res.setText(String.valueOf(cal1.x));
+    }//GEN-LAST:event_CosenoMouseClicked
+
+    private void TangenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TangenteActionPerformed
+            cal1.x=Double.parseDouble(res.getText());
+            cal1.radianes(cal1.x);
+            cal1.x=cal1.tangente();
+            res.setText(String.valueOf(cal1.x));
+    }//GEN-LAST:event_TangenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,14 +466,18 @@ private void activacion(){
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton Aritmetica;
     private javax.swing.JButton Convertir;
+    private javax.swing.JButton Coseno;
     private javax.swing.JButton Dividir;
     private javax.swing.JButton Igual;
     private javax.swing.JButton Multiplicar;
     private javax.swing.JButton Restar;
+    private javax.swing.JButton Seno;
     private javax.swing.JButton Sumar;
     private javax.swing.JLabel T1;
     private javax.swing.JLabel T2;
+    private javax.swing.JButton Tangente;
     private javax.swing.JRadioButton Temperatura;
+    private javax.swing.JRadioButton Trigonometrica;
     private javax.swing.JButton jButton1;
     private javax.swing.JTextField res;
     private javax.swing.JComboBox<String> temp1;

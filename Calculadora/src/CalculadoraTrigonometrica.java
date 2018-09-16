@@ -6,7 +6,7 @@ import static java.lang.Math.toRadians;
 
 public class CalculadoraTrigonometrica {
    double x;
-  void radianes(int a){
+  void radianes(double a){
       x = toRadians(a);
   }    
   double seno(){
