@@ -29,12 +29,12 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
         if (a == 3) {
             cal2.y = (int) Double.parseDouble(res.getText());
             cal2.x = cal2.multiplicar();
-            if (a == 4) {
-                cal2.y = (int) Double.parseDouble(res.getText());
-                cal2.x = cal2.dividir();
-            }
-        }
 
+        }
+        if (a == 4) {
+            cal2.y = (int) Double.parseDouble(res.getText());
+            cal2.x = cal2.dividir();
+        }
     }
 
     public CalculadoraGrafica() {
@@ -76,10 +76,25 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
         });
 
         jButton3.setText("*");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
 
         jButton4.setText("/");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jButton5.setText("=");
+        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton5MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,12 +113,10 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)))
-                .addContainerGap(99, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(20, 20, 20))
+                        .addComponent(jButton4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton5)))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,10 +128,9 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
                     .addComponent(jButton1)
                     .addComponent(jButton2)
                     .addComponent(jButton3)
-                    .addComponent(jButton4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 172, Short.MAX_VALUE)
-                .addComponent(jButton5)
-                .addGap(24, 24, 24))
+                    .addComponent(jButton4)
+                    .addComponent(jButton5))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
 
         pack();
@@ -133,8 +145,26 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
     private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
         operacion(aux);
         res.setText(String.valueOf(cal2.x));
-        aux = 1;
+        aux = 2;
     }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        operacion(aux);
+        res.setText(String.valueOf(cal2.x));
+        aux = 3;
+    }//GEN-LAST:event_jButton3MouseClicked
+
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        operacion(aux);
+        res.setText(String.valueOf(cal2.x));
+        aux = 4;
+    }//GEN-LAST:event_jButton4MouseClicked
+
+    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+        operacion(aux);
+        res.setText(String.valueOf(cal2.x));
+        aux = 0;
+    }//GEN-LAST:event_jButton5MouseClicked
 
     /**
      * @param args the command line arguments
