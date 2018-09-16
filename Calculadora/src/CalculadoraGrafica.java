@@ -13,7 +13,37 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
     CalculadoraTrigonometrica cal1 = new CalculadoraTrigonometrica();
     CalculadoraAritmetica cal2 = new CalculadoraAritmetica();
     int aux = 0;
+private void activacion(){
+         if (Aritmetica.isSelected()) {
 
+            Sumar.setEnabled(true);
+            Restar.setEnabled(true);
+            Multiplicar.setEnabled(true);
+            Dividir.setEnabled(true);
+            Igual.setEnabled(true);
+        }
+         else{
+            Sumar.setEnabled(false);
+            Restar.setEnabled(false);
+            Multiplicar.setEnabled(false);
+            Dividir.setEnabled(false);
+            Igual.setEnabled(false); 
+         }
+        if (Temperatura.isSelected()) {
+            T1.setEnabled(true);
+            T2.setEnabled(true);
+            temp1.setEnabled(true);
+            temp2.setEnabled(true);
+            Convertir.setEnabled(true);
+        }
+        else{
+            T1.setEnabled(false);
+            T2.setEnabled(false);
+            temp1.setEnabled(false);
+            temp2.setEnabled(false); 
+            Convertir.setEnabled(true);        
+        }
+}
     private void operacion(int a) {
         if (a == 0) {
             cal2.x = (int) Double.parseDouble(res.getText());
@@ -50,49 +80,105 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        res = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        res = new javax.swing.JTextField();
+        Sumar = new javax.swing.JButton();
+        Restar = new javax.swing.JButton();
+        Multiplicar = new javax.swing.JButton();
+        Dividir = new javax.swing.JButton();
+        Igual = new javax.swing.JButton();
+        Temperatura = new javax.swing.JRadioButton();
+        temp1 = new javax.swing.JComboBox<>();
+        Aritmetica = new javax.swing.JRadioButton();
+        temp2 = new javax.swing.JComboBox<>();
+        T1 = new javax.swing.JLabel();
+        T2 = new javax.swing.JLabel();
+        Convertir = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Calculadora");
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         res.setText("0");
 
-        jButton1.setText("+");
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        Sumar.setText("+");
+        Sumar.setEnabled(false);
+        Sumar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                SumarMouseClicked(evt);
             }
         });
 
-        jButton2.setText("-");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        Restar.setText("-");
+        Restar.setEnabled(false);
+        Restar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                RestarMouseClicked(evt);
             }
         });
 
-        jButton3.setText("*");
-        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+        Multiplicar.setText("*");
+        Multiplicar.setEnabled(false);
+        Multiplicar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton3MouseClicked(evt);
+                MultiplicarMouseClicked(evt);
             }
         });
 
-        jButton4.setText("/");
-        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+        Dividir.setText("/");
+        Dividir.setEnabled(false);
+        Dividir.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton4MouseClicked(evt);
+                DividirMouseClicked(evt);
             }
         });
 
-        jButton5.setText("=");
-        jButton5.addMouseListener(new java.awt.event.MouseAdapter() {
+        Igual.setText("=");
+        Igual.setEnabled(false);
+        Igual.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton5MouseClicked(evt);
+                IgualMouseClicked(evt);
+            }
+        });
+
+        Temperatura.setText("Temperatura");
+        Temperatura.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                TemperaturaActionPerformed(evt);
+            }
+        });
+
+        temp1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celcius", "Kelvin", "Farenheit" }));
+        temp1.setEnabled(false);
+
+        Aritmetica.setSelected(true);
+        Aritmetica.setText("Aritmetica");
+        Aritmetica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AritmeticaActionPerformed(evt);
+            }
+        });
+
+        temp2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Celcius", "Kelvin", "Farenheit" }));
+        temp2.setEnabled(false);
+
+        T1.setText("De:");
+        T1.setEnabled(false);
+
+        T2.setText("A:");
+        T2.setEnabled(false);
+
+        Convertir.setText("Convertir");
+        Convertir.setEnabled(false);
+        Convertir.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                ConvertirMouseClicked(evt);
             }
         });
 
@@ -103,20 +189,41 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(res, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(20, 20, 20)
-                        .addComponent(jButton1)
+                        .addGap(14, 14, 14)
+                        .addComponent(Sumar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
+                        .addComponent(Restar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3)
+                        .addComponent(Multiplicar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4)
+                        .addComponent(Dividir)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton5)))
-                .addContainerGap(28, Short.MAX_VALUE))
+                        .addComponent(Igual))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(44, 44, 44)
+                            .addComponent(res, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addGap(23, 23, 23)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(temp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(temp2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(layout.createSequentialGroup()
+                                            .addComponent(T1)
+                                            .addGap(203, 203, 203)
+                                            .addComponent(T2))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(Convertir)
+                                            .addGroup(layout.createSequentialGroup()
+                                                .addComponent(Aritmetica)
+                                                .addGap(18, 18, 18)
+                                                .addComponent(Temperatura))))
+                                    .addGap(0, 0, Short.MAX_VALUE))))))
+                .addContainerGap(287, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -125,46 +232,84 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
                 .addComponent(res, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5))
-                .addContainerGap(40, Short.MAX_VALUE))
+                    .addComponent(Sumar)
+                    .addComponent(Restar)
+                    .addComponent(Multiplicar)
+                    .addComponent(Dividir)
+                    .addComponent(Igual))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Temperatura)
+                    .addComponent(Aritmetica))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(T1)
+                    .addComponent(T2))
+                .addGap(9, 9, 9)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(temp1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(temp2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Convertir))
+                .addContainerGap(279, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void SumarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_SumarMouseClicked
         operacion(aux);
         res.setText(String.valueOf(cal2.x));
         aux = 1;
-    }//GEN-LAST:event_jButton1MouseClicked
+    }//GEN-LAST:event_SumarMouseClicked
 
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void RestarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RestarMouseClicked
         operacion(aux);
         res.setText(String.valueOf(cal2.x));
         aux = 2;
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_RestarMouseClicked
 
-    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+    private void MultiplicarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_MultiplicarMouseClicked
         operacion(aux);
         res.setText(String.valueOf(cal2.x));
         aux = 3;
-    }//GEN-LAST:event_jButton3MouseClicked
+    }//GEN-LAST:event_MultiplicarMouseClicked
 
-    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+    private void DividirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DividirMouseClicked
         operacion(aux);
         res.setText(String.valueOf(cal2.x));
         aux = 4;
-    }//GEN-LAST:event_jButton4MouseClicked
+    }//GEN-LAST:event_DividirMouseClicked
 
-    private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
+    private void IgualMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IgualMouseClicked
         operacion(aux);
         res.setText(String.valueOf(cal2.x));
         aux = 0;
-    }//GEN-LAST:event_jButton5MouseClicked
+    }//GEN-LAST:event_IgualMouseClicked
+
+    private void TemperaturaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TemperaturaActionPerformed
+
+        Aritmetica.setSelected(false);
+        activacion();
+        
+    }//GEN-LAST:event_TemperaturaActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+     activacion();
+    }//GEN-LAST:event_formWindowOpened
+
+    private void AritmeticaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AritmeticaActionPerformed
+        Temperatura.setSelected(false);
+        activacion();
+    }//GEN-LAST:event_AritmeticaActionPerformed
+
+    private void ConvertirMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ConvertirMouseClicked
+        String s1 = (String) temp1.getSelectedItem(); 
+        String s2 = (String) temp2.getSelectedItem();
+        if(s1 == "Celcius"&& s2=="Kelvin"){
+            cal2.x=(int) Double.parseDouble(res.getText());
+            res.setText(String.valueOf(cal2.x+273));
+        }
+    }//GEN-LAST:event_ConvertirMouseClicked
 
     /**
      * @param args the command line arguments
@@ -202,11 +347,19 @@ public class CalculadoraGrafica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JRadioButton Aritmetica;
+    private javax.swing.JButton Convertir;
+    private javax.swing.JButton Dividir;
+    private javax.swing.JButton Igual;
+    private javax.swing.JButton Multiplicar;
+    private javax.swing.JButton Restar;
+    private javax.swing.JButton Sumar;
+    private javax.swing.JLabel T1;
+    private javax.swing.JLabel T2;
+    private javax.swing.JRadioButton Temperatura;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JTextField res;
+    private javax.swing.JComboBox<String> temp1;
+    private javax.swing.JComboBox<String> temp2;
     // End of variables declaration//GEN-END:variables
 }
