@@ -41,7 +41,7 @@ private void activacion(){
             T2.setEnabled(false);
             temp1.setEnabled(false);
             temp2.setEnabled(false); 
-            Convertir.setEnabled(true);        
+            Convertir.setEnabled(false);        
         }
 }
     private void operacion(int a) {
@@ -306,9 +306,29 @@ private void activacion(){
         String s1 = (String) temp1.getSelectedItem(); 
         String s2 = (String) temp2.getSelectedItem();
         if(s1 == "Celcius"&& s2=="Kelvin"){
-            cal2.x=(int) Double.parseDouble(res.getText());
-            res.setText(String.valueOf(cal2.x+273));
+            cal2.t= Double.parseDouble(res.getText());
+            res.setText(String.valueOf(cal2.t+273));
         }
+        if(s2 == "Celcius"&& s1=="Kelvin"){
+            cal2.t= Double.parseDouble(res.getText());
+            res.setText(String.valueOf(cal2.t-273));
+        }
+        if(s1 == "Celcius"&& s2=="Farenheit"){
+            cal2.t= Double.parseDouble(res.getText());
+            res.setText(String.valueOf(cal2.t*9/5+32));
+        }
+        if(s2 == "Celcius"&& s1=="Farenheit"){
+            cal2.t= Double.parseDouble(res.getText());
+            res.setText(String.valueOf((cal2.t-32)*5/9));
+        }
+        if(s1 == "Kelvin"&& s2=="Farenheit"){
+            cal2.t= Double.parseDouble(res.getText());
+            res.setText(String.valueOf((cal2.t-273.15)*1.8000+32));
+        } 
+        if(s2 == "Kelvin"&& s1=="Farenheit"){
+            cal2.t= Double.parseDouble(res.getText());
+            res.setText(String.valueOf((cal2.t+459.67)*5/9));
+        }          
     }//GEN-LAST:event_ConvertirMouseClicked
 
     /**
